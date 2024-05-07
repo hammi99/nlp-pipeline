@@ -1,0 +1,53 @@
+# @format
+
+version: '3.8'
+name: nlp-pipeline
+
+services:
+
+  source-db:
+    container_name: source-db
+    build:
+      context: ./sourceDb
+    networks:
+      - default
+    ports:
+      - '3306:3306'
+    volumes:
+      - source-db-data:/var/lib/mysql
+
+  sink-db:
+    container_name: sink-db
+    build:
+      context: ./sinkDb
+    networks:
+      - default
+    ports:
+      - '27017:27017'
+
+  map-reduce:
+    container_name: map-reduce
+    depends_on:
+      - source-db
+      - sink-db
+    build:
+      context: ./mapReduce
+    # entrypoint: ['./entrypoint.sh', 'master']
+    networks:
+      - default
+    ports:
+      - '8888:8888'
+    # volumes:
+    #   - ./mapReduce:/app
+        
+
+  # analytics:
+  # dashboard:
+
+networks:
+  default:
+
+volumes:
+  source-db-data:
+  temp:
+#     sinkDb:

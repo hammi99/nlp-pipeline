@@ -1,0 +1,39 @@
+Date       ,Band             ,ConcertName                                   ,Country ,City   ,Location                   ,LocationAddress                                    ,
+2023-05-28 ,Ozzy Osbourne    ,No More Tours 2 - Special Guest: Judas Priest ,Germany ,Berlin ,Mercedes-Benz Arena Berlin ,"Mercedes-Platz 1, 10243 Berlin-Friedrichshain"    ,
+2023-05-08 ,Elton John       ,Farewell Yellow Brick Road Tour 2023          ,Germany ,Berlin ,Mercedes-Benz Arena Berlin ,"Mercedes-Platz 1 10243 Berlin-Friedrichshain"     ,
+2023-05-26 ,Hans Zimmer Live ,Europe Tour 2023                              ,Germany ,Berlin ,Mercedes-Benz Arena Berlin ,"Mercedes-Platz 1, 10243 Berlin-Friedrichshain"    ,
+2023-07-07 ,Depeche Mode     ,Memento Mori World Tour 2023                  ,Germany ,Berlin ,Olympiastadion Berlin      ,"Olympischer Platz 3, 14053 Berlin-Charlottenburg" ,
+
+
+
+mysql> select * from concerts2;
++----+------------+------------------+-----------------------------------------------+---------+--------+----------------------------+--------------------------------------------------+
+| id | Date       | Band             | ConcertName                                   | Country | City   | Location                   | LocationAddress                                  |
++----+------------+------------------+-----------------------------------------------+---------+--------+----------------------------+--------------------------------------------------+
+|  1 | 2023-05-28 | Ozzy Osbourne    | No More Tours 2 - Special Guest: Judas Priest | Germany | Berlin | Mercedes-Benz Arena Berlin | Mercedes-Platz 1, 10243 Berlin-Friedrichshain    |
+|  2 | 2023-05-08 | Elton John       | Farewell Yellow Brick Road Tour 2023          | Germany | Berlin | Mercedes-Benz Arena Berlin | Mercedes-Platz 1 10243 Berlin-Friedrichshain     |
+|  3 | 2023-05-26 | Hans Zimmer Live | Europe Tour 2023                              | Germany | Berlin | Mercedes-Benz Arena Berlin | Mercedes-Platz 1, 10243 Berlin-Friedrichshain    |
+|  4 | 2023-07-07 | Depeche Mode     | Memento Mori World Tour 2023                  | Germany | Berlin | Olympiastadion Berlin      | Olympischer Platz 3, 14053 Berlin-Charlottenburg |
++----+------------+------------------+-----------------------------------------------+---------+--------+----------------------------+--------------------------------------------------+
+
+
+
+
+
+
+Date       ,Band             ,ConcertName                                   ,Country ,City   ,Location                   ,LocationAddress
+2023-05-28 ,Ozzy Osbourne    ,No More Tours 2 - Special Guest: Judas Priest ,Germany ,Berlin ,Mercedes-Benz Arena Berlin ,"Mercedes-Platz 1, 10243 Berlin-Friedrichshain"
+2023-05-08 ,Elton John       ,Farewell Yellow Brick Road Tour 2023          ,Germany ,Berlin ,Mercedes-Benz Arena Berlin ,"Mercedes-Platz 1 10243 Berlin-Friedrichshain"
+2023-05-26 ,Hans Zimmer Live ,Europe Tour 2023                              ,Germany ,Berlin ,Mercedes-Benz Arena Berlin ,"Mercedes-Platz 1, 10243 Berlin-Friedrichshain"
+2023-07-07 ,Depeche Mode     ,Memento Mori World Tour 2023                  ,Germany ,Berlin ,Olympiastadion Berlin      ,"Olympischer Platz 3, 14053 Berlin-Charlottenburg"
+
+
+mysql> select * from concerts2;
++----+------------+---------------+-----------------------------------------------+---------+--------+----------------------------+------------------------------------------------------------------------------------------------------+
+| id | Date       | Band          | ConcertName                                   | Country | City   | Location                   | LocationAddress
+                              |
++----+------------+---------------+-----------------------------------------------+---------+--------+----------------------------+------------------------------------------------------------------------------------------------------+
+|  1 | 2023-05-28 | Ozzy Osbourne | No More Tours 2 - Special Guest: Judas Priest | Germany | Berlin | Mercedes-Benz Arena Berlin | "Mercedes-Platz 1, 10243 Berlin-Friedrichshain"
+2023-05-08,Elton John,Farewell Yellow Brick Road To |
++----+------------+---------------+-----------------------------------------------+---------+--------+----------------------------+------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
