@@ -3,6 +3,8 @@ FROM mysql
 ENV MYSQL_ROOT_PASSWORD password
 ENV MYSQL_DATABASE default
 
+# RUN echo "local-infile=1" >> my.cnf
+
 # COPY sql/* /docker-entrypoint-initdb.d
 COPY sql/1-init.sql /docker-entrypoint-initdb.d
 # COPY sql/2-dump.sql /docker-entrypoint-initdb.d

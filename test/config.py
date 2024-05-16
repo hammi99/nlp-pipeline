@@ -12,7 +12,8 @@ class MongoDb:
     user       = 'root'
     password   = 'password'
     database   = 'default'
-    collection = 'Tweet'
+    readCollection  = 'Tweet'
+    writeCollection = 'Sentiment'
     
 class Spark:
     home = 'sparkFiles/spark-3.5.1-bin-hadoop3'

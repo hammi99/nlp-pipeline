@@ -40,9 +40,34 @@ services:
     # volumes:
     #   - ./mapReduce:/app
         
-
-  # analytics:
+  analytics:
+    container_name: analytics
+    depends_on:
+      - sink-db
+    build:
+      context: ./analytics
+    networks:
+      - default
+    ports:
+      - '8889:8889'
+    
   # dashboard:
+
+  test:
+    container_name: test
+    depends_on:
+    #   - source-db
+      - sink-db
+    #   - map-reduce
+    #   - analytics
+    build:
+      context: ./test
+    networks:
+      - default
+    ports:
+      - '8880:8880'
+    volumes:
+      - temp:/usr/local
 
 networks:
   default:
@@ -50,4 +75,3 @@ networks:
 volumes:
   source-db-data:
   temp:
-#     sinkDb:

@@ -1,0 +1,2 @@
+import sparknlp
+sparknlp.start()
