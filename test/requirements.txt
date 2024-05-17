@@ -1,4 +1,0 @@
-jupyterlab
-numpy
-pyspark==3.2.3
-spark-nlp==5.3.3

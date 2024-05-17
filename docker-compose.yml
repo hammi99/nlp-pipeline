@@ -38,7 +38,7 @@ services:
     ports:
       - '8888:8888'
     # volumes:
-    #   - ./mapReduce:/app
+    #   - map-reduce-data:/usr/local
         
   analytics:
     container_name: analytics
@@ -50,28 +50,25 @@ services:
       - default
     ports:
       - '8889:8889'
+    # volumes:
+    #   - temp:/usr/local
     
-  # dashboard:
-
-  test:
-    container_name: test
+  dashboard:
+    container_name: dashboard
     depends_on:
-    #   - source-db
       - sink-db
-    #   - map-reduce
-    #   - analytics
     build:
-      context: ./test
+      context: ./dashboard
     networks:
       - default
     ports:
       - '8880:8880'
-    volumes:
-      - temp:/usr/local
+
 
 networks:
   default:
 
 volumes:
   source-db-data:
+  map-reduce-data:
   temp:
