@@ -31,13 +31,17 @@ RUN pip3 install -r requirements.txt
 
 
 
-CMD jupyter lab					\
-	--allow-root 				\
-	--no-browser 				\
-	--ServerApp.ip='0.0.0.0' 	\
-	--ServerApp.port=8880 		\
-	--ServerApp.token='' 		\
-	--ServerApp.password=''
+# CMD jupyter lab					\
+# 	--allow-root 				\
+# 	--no-browser 				\
+# 	--ServerApp.ip='0.0.0.0' 	\
+# 	--ServerApp.port=8880 		\
+# 	--ServerApp.token='' 		\
+# 	--ServerApp.password=''
 
-EXPOSE 8880
 
+CMD streamlit run dashboard.py
+	# --server.port=8080 			\
+	# --server.address=0.0.0.0
+
+EXPOSE 8501

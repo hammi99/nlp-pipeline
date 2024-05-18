@@ -13,8 +13,8 @@ services:
       - default
     ports:
       - '3306:3306'
-    volumes:
-      - source-db-data:/var/lib/mysql
+    # volumes:
+    #   - source-db-data:/var/lib/mysql
 
   sink-db:
     container_name: sink-db
@@ -32,13 +32,10 @@ services:
       - sink-db
     build:
       context: ./mapReduce
-    # entrypoint: ['./entrypoint.sh', 'master']
     networks:
       - default
     ports:
       - '8888:8888'
-    # volumes:
-    #   - map-reduce-data:/usr/local
         
   analytics:
     container_name: analytics
@@ -50,8 +47,6 @@ services:
       - default
     ports:
       - '8889:8889'
-    # volumes:
-    #   - temp:/usr/local
     
   dashboard:
     container_name: dashboard
@@ -62,7 +57,7 @@ services:
     networks:
       - default
     ports:
-      - '8880:8880'
+      - '8501:8501'
 
 
 networks:
@@ -70,5 +65,3 @@ networks:
 
 volumes:
   source-db-data:
-  map-reduce-data:
-  temp:
