@@ -12,9 +12,10 @@ df = pd.concat([
 	for file in pathlib.Path('./Sentiment').iterdir()
     if file.suffix == '.csv'
 ])
+
 df.reset_index(drop= True, inplace= True)
 # df.set_index('createdAt', inplace= True)
-df.drop(columns= ['_id', 'userName'], inplace= True)
+# df.drop(columns= ['_id', 'userName'], inplace= True)
 df.drop(columns= 'createdAt', inplace= True)
 
 print(df.info())
