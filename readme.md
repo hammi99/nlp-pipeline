@@ -9,3 +9,4 @@
  8. open it and execute the contents, this will preprocess the data and add it to sink-db (mongodb)
  9. analytics notebook is located at http://127.0.0.1:8889/lab
 10. open it and execute the contents, this will perform analysis on the preprocessed data and write it to sink-db 
+11. to open the dashboard visit the link 'http://localhost:8501/' (first time you open the link, it will take some time, because it's downloading some data)
