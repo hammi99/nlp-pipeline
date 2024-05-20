@@ -58,6 +58,7 @@ services:
       - default
     ports:
       - '8501:8501'
+      - '8880:8880'
 
 
 networks:

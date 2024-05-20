@@ -1,3 +1,6 @@
 streamlit
 pyspark
 pandas
+matplotlib
+seaborn
+pmdarima

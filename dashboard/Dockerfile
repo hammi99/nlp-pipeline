@@ -27,21 +27,26 @@ RUN mv jars/* ${SPARK_HOME}/jars
 
 
 WORKDIR /app
-RUN pip3 install -r requirements.txt
+# RUN pip3 install -r requirements.txt
+RUN pip3 install jupyterlab
+RUN pip3 install streamlit
+RUN pip3 install pandas
+RUN pip3 install pyspark
 
 
 
-# CMD jupyter lab					\
-# 	--allow-root 				\
-# 	--no-browser 				\
-# 	--ServerApp.ip='0.0.0.0' 	\
-# 	--ServerApp.port=8880 		\
-# 	--ServerApp.token='' 		\
-# 	--ServerApp.password=''
+CMD jupyter lab					\
+	--allow-root 				\
+	--no-browser 				\
+	--ServerApp.ip='0.0.0.0' 	\
+	--ServerApp.port=8880 		\
+	--ServerApp.token='' 		\
+	--ServerApp.password=''
+
+EXPOSE 8880
 
 
-CMD streamlit run dashboard.py
-	# --server.port=8080 			\
-	# --server.address=0.0.0.0
+# CMD streamlit run dashboard.py
+# 	--server.port=8080 			\
 
-EXPOSE 8501
+# EXPOSE 8501

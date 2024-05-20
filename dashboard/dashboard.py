@@ -2,54 +2,63 @@ import pathlib
 import streamlit as st
 import pandas as pd
 
-import copyData	# copies data from mongodb to local csv files
+
+st.set_page_config(
+	page_title= 'Sentiment Prediction Dashboard', 
+	page_icon = '📈', 
+	layout    = 'wide', 
+	initial_sidebar_state= 'expanded', 
+)
 
 
-
-df = pd.concat([
-    pd.read_csv(file, parse_dates= [0], infer_datetime_format= True)
-    
-	for file in pathlib.Path('./Sentiment').iterdir()
-    if file.suffix == '.csv'
-])
-
-df.reset_index(drop= True, inplace= True)
-# df.set_index('createdAt', inplace= True)
-# df.drop(columns= ['_id', 'userName'], inplace= True)
-df.drop(columns= 'createdAt', inplace= True)
-
-print(df.info())
-
-
-df = df.rolling(window= 10).mean()
-
+prediction1day = pd.read_csv('./data/1-day-sentiment-prediction.csv')
+prediction3day = pd.read_csv('./data/3-day-sentiment-prediction.csv')
+prediction7day = pd.read_csv('./data/7-day-sentiment-prediction.csv')
 
 
 
 with st.sidebar:
     st.title('select Sentiment scores to display')
-    columns = {
+    features = {
         'compound': st.checkbox('compound', value= True),
         'negative': st.checkbox('negative', value= True),
         'neutral' : st.checkbox('neutral' , value= True),
         'positive': st.checkbox('positive', value= True),
 	}
-    colors = {
-        'compound': '#0E1FF0',
-		'negative': '#F00E0E',
-		'neutral' : '#7D7D7D',
-		'positive': '#5DF00E',
-	}
-    
-    columns = [key   for key, value in columns.items() if value]
-    colors  = [value for key, value in colors.items()  if key in columns]
-	# st.write(columns)
-    
+    features = [key   for key, value in features.items() if value]
+    columns  = [colName 
+		for colName in prediction1day.columns 
+        if any(
+            feature in colName
+            for feature in features
+		)
+    ]
 
+st.write('# Sentiment Prediction')
+col = st.columns((2, 2), gap='medium')
+
+with col[0]:
+	st.write('### 1-day prediction')
+	st.line_chart(
+		data= prediction1day, 
+		x     = 'createdAt', 
+		y     = columns,
+		height= 500, 
+	)
+with col[1]:
+	st.write('### 3-day prediction')
+	st.line_chart(
+		data= prediction1day, 
+		x     = 'createdAt', 
+		y     = columns,
+		height= 500, 
+	)
+# with col[1]:
+
+st.write('### 7-day prediction')
 st.line_chart(
-    data= df, 
-    # x     = 'createdAt', 
-    y     = columns,
-    color = colors,
-    height= 500, 
+	data= prediction1day, 
+	x     = 'createdAt', 
+	y     = columns,
+	height= 500, 
 )
